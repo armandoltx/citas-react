@@ -10,6 +10,10 @@ class AgregarCita extends Component {
   horaRef = React.createRef();
   sintomasRef = React.createRef();
 
+  state = {
+    error: false,
+  }
+
   //crear onSubmit funcion para el formulario
   crearNuevaCita = (e) => {
     // 1. Prevenir default para q no se recargue
@@ -40,26 +44,36 @@ class AgregarCita extends Component {
           sintomas = this.sintomasRef.current.value,
           id = uuid();
 
-        const nuevaCita = { // usando destructuring
-          mascota,
-          propietario,
-          fecha,
-          hora,
-          sintomas,
-          id: uuid(),
-        }
-        
+    if (mascota === '' || propietario === '' || fecha === '' || hora === '' || sintomas === '') {
+      this.setState ({
+        error: true,
+      });
+    } else {
+      const nuevaCita = { // usando destructuring
+        mascota,
+        propietario,
+        fecha,
+        hora,
+        sintomas,
+        id: uuid(),
+      }
 
+      // 3. Agregarlo y enviarlo por props hacia el padre para actualizar el state
+      this.props.agregarCita(nuevaCita);
 
-    // 3. Agregarlo y enviarlo por props
-    this.props.agregarCita(nuevaCita);
+      // 4. Resetear el formulario
+      e.currentTarget.reset();
 
-    // 4. Resetear el formulario
-    e.currentTarget.reset();
+      // 5. Elimine el error
+      this.setState ({
+        error: false,
+      });
 
+    }
   }
 
   render() {
+    const existeError = this.state.error;
     return (
       <div className="card mt-5">
         <div className="card-body">
@@ -102,6 +116,7 @@ class AgregarCita extends Component {
               </div>
             </div>
           </form>
+          {existeError ? <div className="alert alert-danger text-center">Todos los Campos son obligatorios</div> : ""}
         </div>
       </div>
     );
