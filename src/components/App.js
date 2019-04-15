@@ -4,14 +4,23 @@ import AgregarCita from './AgregarCita';
 
 class App extends Component {
 
+  // crear el state
+  state = {
+    citas:[],
+  }
+
 
   // Agregar la Cita al State
-  agregarCita = (cita) => {
-    console.log("Dentro de App ", cita);
+  agregarCita = (nuevaCita) => {
+    console.log("Dentro de App ", nuevaCita);
 
     //Hacer una copia del state actual
-    // Agregar la cita al objeto del state
+    const citas = [...this.state.citas, nuevaCita]
+    console.log("cambiando el state ", citas);
     // ponerlo en el state
+    this.setState ({
+      citas: citas,
+    });
 
   }
 

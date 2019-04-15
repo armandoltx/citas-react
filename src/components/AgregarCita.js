@@ -55,6 +55,7 @@ class AgregarCita extends Component {
     this.props.agregarCita(nuevaCita);
 
     // 4. Resetear el formulario
+    e.currentTarget.reset();
 
   }
 
