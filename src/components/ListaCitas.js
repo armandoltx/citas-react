@@ -13,7 +13,14 @@ class ListaCitas extends Component {
         <div className="card-body">
           <h2 card-title className="text-center card-title">{mensaje}</h2>
           <div className="lista-citas">
-            <Cita />
+            {Object.keys(this.props.citas).map((cita) => (
+              //console.log("key ", key),
+              //console.log(citas[key])
+              <Cita
+                key={cita}
+                info={this.props.citas[cita]} 
+              />
+            ) ) }
           </div>
         </div>
       </div>
