@@ -6,8 +6,8 @@ class App extends Component {
 
 
   // Agregar la Cita al State
-  agregarCita = () => {
-    console.log("Dentro de App");
+  agregarCita = (cita) => {
+    console.log("Dentro de App ", cita);
 
     //Hacer una copia del state actual
     // Agregar la cita al objeto del state

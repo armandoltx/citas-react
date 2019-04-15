@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid'; // Para generar un id unico
 
 class AgregarCita extends Component {
 
@@ -22,9 +23,36 @@ class AgregarCita extends Component {
 
 
     // 2. Crear el Objeto con los datos
+      // se puede hacer asi
+      // const nuevaCita = {
+      //   mascota: this.nombreMascotaRef.current.value,
+      //   propietario: this.propietarioRef.current.value,
+      //   fecha: this.fechaRef.current.value,
+      //   hora: this.horaRef.current.value,
+      //   sintomas: this.sintomasRef.current.value,
+      //   id: uuid(),
+      // }
+      // se puede hacer asi tb:
+        const mascota = this.nombreMascotaRef.current.value,
+          propietario = this.propietarioRef.current.value,
+          fecha = this.fechaRef.current.value,
+          hora = this.horaRef.current.value,
+          sintomas = this.sintomasRef.current.value,
+          id = uuid();
+
+        const nuevaCita = { // usando destructuring
+          mascota,
+          propietario,
+          fecha,
+          hora,
+          sintomas,
+          id: uuid(),
+        }
+        
+
 
     // 3. Agregarlo y enviarlo por props
-    this.props.agregarCita();
+    this.props.agregarCita(nuevaCita);
 
     // 4. Resetear el formulario
 
