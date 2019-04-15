@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid'; // Para generar un id unico
+import PropTypes from 'prop-types';
 
 class AgregarCita extends Component {
 
@@ -121,6 +122,10 @@ class AgregarCita extends Component {
       </div>
     );
   }
+}
+
+AgregarCita.propTypes = {
+  agregarCita: PropTypes.func.isRequired,
 }
 
 export default AgregarCita;
