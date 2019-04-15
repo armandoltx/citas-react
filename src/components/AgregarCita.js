@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 
 class AgregarCita extends Component {
+
+
+  //crear onSubmit funcion para el formulario
+  crearNuevaCita = (e) => {
+    // 1. Prevenir default para q no se recargue
+      e.preventDefault();
+      console.log("Dentro de crearNuevaCita");
+
+    // 2. Crear el Objeto con los datos
+
+    // 3. Agregarlo y enviarlo por props
+    this.props.agregarCita();
+
+    // 4. Resetear el formulario
+
+  }
+
   render() {
     return (
       <div className="card mt-5">
         <div className="card-body">
-          <h2 className="card-title text-center mb-5">Agrega las Citas Aqui</h2>
-          <form >
+          <h2 className="card-title text-center mb-5">Agrega las Citas aqui</h2>
+          <form onSubmit={this.crearNuevaCita}>
             <div className="form-group row">
               <label className="col-sm-4 col-lg-2 col-form-label">Nombre Mascota</label>
               <div className="col-sm-8 col-lg-10">
